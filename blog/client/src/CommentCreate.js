@@ -7,7 +7,7 @@ const CommentCreate = ({postID}) => {
         e.preventDefault()
         
         console.log("postID: ",postID);
-        const res = await axios.post(`http://localhost:4001/posts/${postID}/comments`,{
+        await axios.post(`http://localhost:4001/posts/${postID}/comments`,{
             content : comment
         })
 
@@ -24,7 +24,7 @@ const CommentCreate = ({postID}) => {
                     onChange={(e)=>{setComment(e.target.value)}}
                 />  
             </div>
-            <button className='btn btn-primary' disabled={comment.length==0}>
+            <button className='btn btn-primary' disabled={comment.length === 0}>
                 Submit
             </button>
         </form>

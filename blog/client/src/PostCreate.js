@@ -23,7 +23,7 @@ const PostCreate = () => {
                     <label>Title</label>
                     <input value={title} onChange={(e)=> setTitle(e.target.value)} className="form-control" style={{marginTop:20}}/>
                 </div>
-                <button className="btn btn-primary" style={{marginTop:20}} disabled={title.length==0}>
+                <button className="btn btn-primary" style={{marginTop:20}} disabled={title.length === 0}>
                     Submit
                 </button>
             </form>
