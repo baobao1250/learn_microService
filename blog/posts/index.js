@@ -19,15 +19,17 @@ app.post('/posts',async(req, res)=>{
     const {title} = req.body;
 
     posts[id] ={
-        id, title
+        id, 
+        title
     };
 
-    await axios.post('http://localhost:4005/events',{
+    await axios.post('http://event-bus-srv:4005/events',{
         type: "PostCreated",
-        data:{
-            id , title
+        data: {
+            id,
+            title
         }
-    })
+    });
 
     res.status(201).send(posts[id]);
 });
@@ -39,6 +41,5 @@ app.post('/events',(req , res)=>{
 })
 
 app.listen(4000,()=>{
-    console.log("v1010");
     console.log("listening on 4000");
 })
