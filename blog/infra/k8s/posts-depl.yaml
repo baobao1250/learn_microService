@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: posts
-          image: postscoding/posts:latest
+          image: postscoding/post-33:0.0.1
 ---
 apiVersion: v1
 kind: Service
