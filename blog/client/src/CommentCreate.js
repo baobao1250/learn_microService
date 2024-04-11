@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const CommentCreate = ({postID}) => {
+const CommentCreate = ({postID,handleChange}) => {
     const [comment , setComment ] = useState("")
     const onSubmit = async (e) =>{
         e.preventDefault()
@@ -9,7 +9,7 @@ const CommentCreate = ({postID}) => {
         console.log("postID: ",postID);
         await axios.post(`http://posts.com/posts/${postID}/comments`,{
             content : comment
-        })
+        }).then((rep)=>{if(rep) handleChange()})
 
         setComment("")
     }

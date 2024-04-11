@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react';
 import CommentCreate from './CommentCreate';
 import CommentList from './CommentList';
 
-const PostsList = () => {
-
+const PostsList = ({isChange}) => {
     const [postList, setPostList]=useState([])
+    const [isChangeComment, setIschangeComment] =useState(true);
+    
+    const handleChangeComment =() => {
+        setIschangeComment(!isChangeComment);
+    };
 
     const fetchPosts = async()=>{
          const res =  await axios.get("http://posts.com/posts")
@@ -15,7 +19,7 @@ const PostsList = () => {
 
     useEffect(()=>{
         fetchPosts()
-    },[])
+    },[isChange ,isChangeComment])
 
     const renderPost = postList.length >0 && postList.map((item)=>(
         <div className='card' style={{width:"30%" , paddingBottom:"10px", marginBottom:"20px"}} key={item.id}>
@@ -23,8 +27,8 @@ const PostsList = () => {
                 <h3>
                     {item.title}
                 </h3>
-                <CommentList comments={item.comments}/>
-                <CommentCreate postID={item.id}/>
+                <CommentList comments={item.comments} />
+                <CommentCreate postID={item.id} handleChange={handleChangeComment}/>
             </div>
         </div>
     ))

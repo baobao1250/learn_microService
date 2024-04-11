@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 
-const PostCreate = () => {
+const PostCreate = ({handleChange}) => {
     const [title, setTitle] = useState("")
 
     const onSubmit= async(event)=>{
@@ -10,7 +10,8 @@ const PostCreate = () => {
 
         await axios.post('http://posts.com/posts/create',{
             title
-        });
+        }).then((rep)=>{if(rep) handleChange()})
+        
          
         setTitle("");
 
