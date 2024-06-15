@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default ({ currentUser }) => {
   const links = [
-    !currentUser && { lable: "Sing in", href: "/auth/signin" },
-    !currentUser && { lable: "Sing up", href: "/auth/signup" },
-    currentUser && { lable: "Sing out", href: "/auth/signout" },
+    !currentUser && { lable: "Sign in", href: "/auth/signin" },
+    !currentUser && { lable: "Sign up", href: "/auth/signup" },
+    currentUser && { lable: "Sign out", href: "/auth/signout" },
   ]
     .filter((link) => link)
     .map((item) => (
